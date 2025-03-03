@@ -42,7 +42,7 @@ export default function ThemeSwitcher() {
           border-2 shadow-md overflow-hidden`}
         initial={false}
         animate={{
-          background: isDark ? "#4338ca" : "#38bdf8",
+          background: isDark ? "#0D0B28" : "#38bdf8",
           borderColor: isDark ? "#818cf8" : "#7dd3fc",
         }}
         whileHover={{ scale: 1.05, boxShadow: "0 4px 15px rgba(0,0,0,0.2)" }}

@@ -587,3 +587,9 @@ html {
   cursor: not-allowed;
   box-shadow: none;
 }
+@media screen and (max-width: 768px) {
+  canvas{
+    height: 500px !important;
+  }
+  }
+  
