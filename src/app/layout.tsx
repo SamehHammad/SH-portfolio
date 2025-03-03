@@ -5,6 +5,8 @@ import "./globals.css";
 import ThemeProvider from "@/context/Theme";
 import QueryProvider from "@/providers/QueryProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { metadata } from '../lib/metaData';
+
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -17,6 +19,8 @@ const spaceGrotesk = localFont({
   variable: "--font-space-grotesk",
   weight: "300 400 500 700",
 });
+export { metadata };
+
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   return (
@@ -29,21 +33,19 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         />
       </head>
       <QueryProvider>
-      <body
-        className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+        <body
+          className={`${inter.className} ${spaceGrotesk.variable} antialiased background-light850_dark100 `}
         >
-          {children}
-          <ReactQueryDevtools initialIsOpen={false} />
-
-        </ThemeProvider>
-        
-      </body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="">{children}</div>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ThemeProvider>
+        </body>
       </QueryProvider>
     </html>
   );
