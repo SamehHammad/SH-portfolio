@@ -1,10 +1,13 @@
+// Add "use client" directive at the top of the file
 "use client";
+
 import React, { useState, useEffect } from "react";
-import Experience from "@/components/about/Experience";
-import Certificates from "@/components/about/Certificates";
-import Skills from "@/components/about/Skills";
-import Internships from "@/components/about/Internships";
 import { useRouter, useSearchParams } from "next/navigation";
+import SEO from "@/components/services/SEO";
+import Responsive from "@/components/services/Responsive";
+import Performance from "@/components/services/Performance";
+import Browser from "@/components/services/Browser";
+import useServices from "@/hooks/useServices";
 
 // Define tab type
 interface Tab {
@@ -19,9 +22,9 @@ const Tabs = () => {
 
   // Sync activeTab with search params and handle default redirect
   useEffect(() => {
-    const tabFromParams = searchParams.get("my");
+    const tabFromParams = searchParams.get("s"); // Use "s" as the query parameter key
 
-    // If no query parameter exists, redirect to experience tab
+    // If no query parameter exists, redirect to the default tab
     if (!tabFromParams) {
       router.replace("/services?s=responsive_design");
       setActiveTab("responsive_design");
@@ -30,9 +33,9 @@ const Tabs = () => {
     else if (isValidTab(tabFromParams)) {
       setActiveTab(tabFromParams);
     }
-    // If query parameter exists but is invalid, redirect to experience tab
+    // If query parameter exists but is invalid, redirect to the default tab
     else {
-      router.replace("/services?s=experience");
+      router.replace("/services?s=responsive_design");
       setActiveTab("responsive_design");
     }
   }, [searchParams, router]);
@@ -50,17 +53,21 @@ const Tabs = () => {
   };
 
   const renderContent = () => {
+    const { services } = useServices();
+    const getServices = (serviceType: string) => {
+      return services?.filter((service) => service.serviceType === serviceType);
+    }
     switch (activeTab) {
       case "responsive_design":
-        return <Experience />;
+        return <Responsive  services={getServices(activeTab)}/>;
       case "seo":
-        return <Certificates />;
+        return <SEO  services={getServices(activeTab)}/>;
       case "performance_optimization":
-        return <Skills />;
+        return <Performance  services={getServices(activeTab)}/>;
       case "cross_browser_compatibility":
-        return <Internships />;
+        return <Browser  services={getServices(activeTab)}/>;
       default:
-        return <Experience />;
+        return <Responsive  services={getServices(activeTab)}/>;
     }
   };
 
