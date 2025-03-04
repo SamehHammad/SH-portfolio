@@ -1,0 +1,110 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Experience from "@/components/about/Experience";
+import Certificates from "@/components/about/Certificates";
+import Skills from "@/components/about/Skills";
+import Internships from "@/components/about/Internships";
+import { useRouter, useSearchParams } from "next/navigation";
+
+// Define tab type
+interface Tab {
+  id: string;
+  label: string;
+}
+
+const Tabs = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState<string>("experience");
+
+  // Sync activeTab with search params and handle default redirect
+  useEffect(() => {
+    const tabFromParams = searchParams.get("my");
+
+    // If no query parameter exists, redirect to experience tab
+    if (!tabFromParams) {
+      router.replace("/about?my=experience");
+      setActiveTab("experience");
+    }
+    // If query parameter exists and is valid, set it as active tab
+    else if (isValidTab(tabFromParams)) {
+      setActiveTab(tabFromParams);
+    }
+    // If query parameter exists but is invalid, redirect to experience tab
+    else {
+      router.replace("/about?my=experience");
+      setActiveTab("experience");
+    }
+  }, [searchParams, router]);
+
+  const tabs: Tab[] = [
+    { id: "experience", label: "Experience" },
+    { id: "certificates", label: "Certificates" },
+    { id: "skills", label: "Skills" },
+    { id: "internships", label: "Internships" },
+  ];
+
+  // Helper function to validate tab ID
+  const isValidTab = (tabId: string): tabId is (typeof tabs)[number]["id"] => {
+    return tabs.some((tab) => tab.id === tabId);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "experience":
+        return <Experience />;
+      case "certificates":
+        return <Certificates />;
+      case "skills":
+        return <Skills />;
+      case "internships":
+        return <Internships />;
+      default:
+        return <Experience />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen transition-colors duration-300">
+      <div className="container mx-auto px-4 py-12 max-w-8xl">
+        <div className="rounded-lg shadow-lg overflow-hidden">
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <nav
+              className="flex justify-center space-x-1 sm:space-x-4 p-4 overflow-x-auto"
+              aria-label="Tabs"
+            >
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    router.push(`/about?my=${tab.id}`);
+                  }}
+                  className={`
+                    relative py-2 px-4 text-sm font-medium rounded-md
+                    transition-all duration-200 ease-in-out
+                    ${
+                      activeTab === tab.id
+                        ? "bg-[#FF7000] text-white"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    }
+                    focus:outline-none focus:ring-2 focus:ring-[#FF7000] focus:ring-offset-2
+                  `}
+                  aria-current={activeTab === tab.id ? "page" : undefined}
+                >
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <span className="absolute bottom-0 left-1/2 w-1 h-1 bg-[#FF7000] rounded-md transform -translate-x-1/2 translate-y-2" />
+                  )}
+                </button>
+              ))}
+            </nav>
+          </div>
+          <div className="p-6">{renderContent()}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Tabs;

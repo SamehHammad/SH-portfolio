@@ -47,12 +47,12 @@ const Nav = () => {
             >
               {/* tooltip */}
               <div className="absolute pr-14 right-0 min-w-max hidden xl:group-hover:flex">
-                <div className="bg-white relative flex text-primary items-center p-[6px] rounded-[3px]">
-                  <div className="text-[12px] leading-none font-semibold">
+                <div className="bg-primary-500 relative flex text-primary items-center p-[6px] rounded-[3px]">
+                  <div className="text-[12px] leading-none font-semibold text-white z-50">
                     {link.name}
                   </div>
                   {/* triangle */}
-                  <div className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2"></div>
+                  <div className="border-solid border-l-gray-700 dark:border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2"></div>
                 </div>
               </div>
               {/* icon */}

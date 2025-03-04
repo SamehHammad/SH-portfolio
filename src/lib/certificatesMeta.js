@@ -1,0 +1,36 @@
+export const certificatesMetadata = {
+  title: 'Sameh Hammad - Certifications | Frontend Developer | React, Next.js, TypeScript',
+  description: 'Explore the certifications of Sameh Hammad, showcasing expertise in React, Next.js, TypeScript, Node.js, MongoDB, and more from platforms like Meta, Coursera, and Mahara-Tech.',
+  openGraph: {
+    title: 'Sameh Hammad - Certifications | Frontend Developer | React, Next.js, TypeScript',
+    description: 'Discover the professional certifications of Sameh Hammad in frontend development, covering advanced React, clean code principles, TypeScript, JavaScript, and backend technologies.',
+    type: 'website',
+    url: 'https://sameh.online/about?my=certificates',
+    site_name: 'Sameh Hammad Portfolio',
+    images: [
+      {
+        url: '/favicon.png', 
+        width: 800,
+        height: 600,
+        alt: 'Sameh Hammad - Certifications',
+      },
+    ],
+  },
+  keywords: [
+    'Sameh Hammad Certifications',
+    'Frontend Developer Certifications',
+    'React Certification',
+    'Next.js Certification',
+    'TypeScript Certification',
+    'Node.js Certification',
+    'MongoDB Certification',
+    'Advanced React Meta',
+    'Coursera Full Stack Development',
+    'Mahara-Tech JavaScript',
+    'Mahara-Tech TypeScript',
+    'Mahara-Tech React JS',
+    'Clean Code Certification',
+    'Professional Web Development',
+    'Full Stack Developer Certifications',
+  ],
+};

@@ -5,8 +5,7 @@ import "./globals.css";
 import ThemeProvider from "@/context/Theme";
 import QueryProvider from "@/providers/QueryProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { metadata } from '../lib/metaData';
-
+import { metadata } from "../lib/metaData";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -20,7 +19,6 @@ const spaceGrotesk = localFont({
   weight: "300 400 500 700",
 });
 export { metadata };
-
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   return (
@@ -42,7 +40,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
             enableSystem
             disableTransitionOnChange
           >
-            <div className="">{children}</div>
+            <div className="mb-32">{children}</div>
             <ReactQueryDevtools initialIsOpen={false} />
           </ThemeProvider>
         </body>
