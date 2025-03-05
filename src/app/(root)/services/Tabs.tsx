@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import SEO from "@/components/services/SEO";
 import Responsive from "@/components/services/Responsive";
 import Performance from "@/components/services/Performance";
@@ -15,30 +14,33 @@ interface Tab {
   label: string;
 }
 
-const Tabs = () => {
+interface SEOProps {
+  services: ServiceData[];
+}
+
+const Tabs = ({
+  currSearchParams,
+}: {
+  currSearchParams: { [key: string]: string | string[] | undefined };
+}) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<string>("responsive_design");
+  const { services } = useServices() as SEOProps; // Move useServices outside renderContent
 
   // Sync activeTab with search params and handle default redirect
   useEffect(() => {
-    const tabFromParams = searchParams.get("s"); // Use "s" as the query parameter key
+    const tabFromParams = currSearchParams?.s; // Access "s" from searchParams object
 
-    // If no query parameter exists, redirect to the default tab
-    if (!tabFromParams) {
+    if (!tabFromParams || typeof tabFromParams !== "string") {
       router.replace("/services?s=responsive_design");
       setActiveTab("responsive_design");
-    }
-    // If query parameter exists and is valid, set it as active tab
-    else if (isValidTab(tabFromParams)) {
+    } else if (isValidTab(tabFromParams)) {
       setActiveTab(tabFromParams);
-    }
-    // If query parameter exists but is invalid, redirect to the default tab
-    else {
+    } else {
       router.replace("/services?s=responsive_design");
       setActiveTab("responsive_design");
     }
-  }, [searchParams, router]);
+  }, [currSearchParams, router]); // Fixed dependency array
 
   const tabs: Tab[] = [
     { id: "responsive_design", label: "Responsive Web Design" },
@@ -51,18 +53,12 @@ const Tabs = () => {
   const isValidTab = (tabId: string): tabId is (typeof tabs)[number]["id"] => {
     return tabs.some((tab) => tab.id === tabId);
   };
-  interface SEOProps {
-    services: ServiceData[];
-  }
+
+  const getServices = (serviceType: string): ServiceData[] => {
+    return services?.filter((service) => service.serviceType === serviceType);
+  };
 
   const renderContent = () => {
-    const { services } = useServices() as SEOProps;
-
-    const getServices = (serviceType: string): ServiceData[] => {
-      return services?.filter(
-        (service: ServiceData) => service.serviceType === serviceType
-      );
-    };
     switch (activeTab) {
       case "responsive_design":
         return <Responsive services={getServices(activeTab)} />;
@@ -73,7 +69,7 @@ const Tabs = () => {
       case "cross_browser_compatibility":
         return <Browser services={getServices(activeTab)} />;
       default:
-        return <Responsive services={getServices(activeTab)} />;
+        return <Responsive services={getServices("responsive_design")} />;
     }
   };
 

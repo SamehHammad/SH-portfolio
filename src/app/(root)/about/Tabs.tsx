@@ -4,7 +4,7 @@ import Experience from "@/components/about/Experience";
 import Certificates from "@/components/about/Certificates";
 import Skills from "@/components/about/Skills";
 import Internships from "@/components/about/Internships";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // Define tab type
 interface Tab {
@@ -12,30 +12,24 @@ interface Tab {
   label: string;
 }
 
-const Tabs = () => {
+const Tabs = ({ currSearchParams }: { currSearchParams: { [key: string]: string | string[] | undefined } }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<string>("experience");
 
   // Sync activeTab with search params and handle default redirect
   useEffect(() => {
-    const tabFromParams = searchParams.get("my");
+    const tabFromParams = currSearchParams?.my; // Access "my" from searchParams object
 
-    // If no query parameter exists, redirect to experience tab
-    if (!tabFromParams) {
+    if (!tabFromParams || typeof tabFromParams !== "string") {
       router.replace("/about?my=experience");
       setActiveTab("experience");
-    }
-    // If query parameter exists and is valid, set it as active tab
-    else if (isValidTab(tabFromParams)) {
+    } else if (isValidTab(tabFromParams)) {
       setActiveTab(tabFromParams);
-    }
-    // If query parameter exists but is invalid, redirect to experience tab
-    else {
+    } else {
       router.replace("/about?my=experience");
       setActiveTab("experience");
     }
-  }, [searchParams, router]);
+  }, [currSearchParams, router]); // Fixed dependency array
 
   const tabs: Tab[] = [
     { id: "experience", label: "Experience" },
