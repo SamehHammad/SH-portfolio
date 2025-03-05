@@ -1,4 +1,3 @@
-// Add "use client" directive at the top of the file
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -8,6 +7,7 @@ import Responsive from "@/components/services/Responsive";
 import Performance from "@/components/services/Performance";
 import Browser from "@/components/services/Browser";
 import useServices from "@/hooks/useServices";
+import { ServiceData } from "@/components/services/ServiceCard";
 
 // Define tab type
 interface Tab {
@@ -51,23 +51,29 @@ const Tabs = () => {
   const isValidTab = (tabId: string): tabId is (typeof tabs)[number]["id"] => {
     return tabs.some((tab) => tab.id === tabId);
   };
+  interface SEOProps {
+    services: ServiceData[];
+  }
 
   const renderContent = () => {
-    const { services } = useServices();
-    const getServices = (serviceType: string) => {
-      return services?.filter((service) => service.serviceType === serviceType);
-    }
+    const { services } = useServices() as SEOProps;
+
+    const getServices = (serviceType: string): ServiceData[] => {
+      return services?.filter(
+        (service: ServiceData) => service.serviceType === serviceType
+      );
+    };
     switch (activeTab) {
       case "responsive_design":
-        return <Responsive  services={getServices(activeTab)}/>;
+        return <Responsive services={getServices(activeTab)} />;
       case "seo":
-        return <SEO  services={getServices(activeTab)}/>;
+        return <SEO services={getServices(activeTab)} />;
       case "performance_optimization":
-        return <Performance  services={getServices(activeTab)}/>;
+        return <Performance services={getServices(activeTab)} />;
       case "cross_browser_compatibility":
-        return <Browser  services={getServices(activeTab)}/>;
+        return <Browser services={getServices(activeTab)} />;
       default:
-        return <Responsive  services={getServices(activeTab)}/>;
+        return <Responsive services={getServices(activeTab)} />;
     }
   };
 
