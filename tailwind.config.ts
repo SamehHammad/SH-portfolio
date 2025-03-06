@@ -77,7 +77,12 @@ const config: Config = {
         "dark-200": "2px 0px 20px 0px rgba(39, 36, 36, 0.04)",
       },
       screens: {
-        xs: "420px",
+        xs: "480px", // Small phones
+        sm: "640px", // Larger phones
+        md: "768px", // Tablets
+        lg: "1024px", // Small laptops (changed from 1140px)
+        xl: "1280px", // Desktops (changed from 1160px)
+        xxl: "1536px", // Large desktops (changed from xxl)
       },
       fontFamily: {
         inter: ["var(--font-inter)"],

@@ -12,7 +12,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       </div>
       <div className="flex">
         <section className="flex h-full w-full flex-col  ">
-          <div className=" w-full lg:pt-10 ">{children}</div>
+          <div className=" w-full pt-10 lg:pt-20 ">{children}</div>
         </section>
       </div>
     </main>

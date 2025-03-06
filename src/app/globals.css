@@ -588,8 +588,7 @@ html {
   box-shadow: none;
 }
 @media screen and (max-width: 768px) {
-  canvas{
+  canvas {
     height: 500px !important;
   }
-  }
-  
+}

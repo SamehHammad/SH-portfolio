@@ -90,7 +90,7 @@ const Tabs = ({
                     router.push(`/services?s=${tab.id}`);
                   }}
                   className={`
-                    relative py-2 px-4 text-sm font-medium rounded-md
+                    relative py-2 px-4 text-[7px] sm:text-xs md:text-sm font-medium rounded-md
                     transition-all duration-200 ease-in-out
                     ${
                       activeTab === tab.id
