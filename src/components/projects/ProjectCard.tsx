@@ -184,11 +184,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
               <button
                 onClick={() => setShowMore(!showMore)}
                 className={`
-                  mt-2 text-sm font-medium
-                  ${theme === "dark" 
-                    ? "text-blue-400 hover:text-blue-300" 
-                    : "text-blue-600 hover:text-blue-700"
-                  }
+                  mt-2 text-sm font-medium text-primary-500
                   transition-colors duration-200
                 `}
               >

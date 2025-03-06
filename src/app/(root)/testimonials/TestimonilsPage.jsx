@@ -12,6 +12,7 @@ import Link from "next/link";
 import TestimonialCard from "@/components/testimonials/TestimonialsCard";
 import { textVariant } from "@/utils/motion";
 import { useTheme } from "next-themes";
+import Socials from "@/components/Socials";
 
 // Base styles
 const baseStyles = {
@@ -55,19 +56,23 @@ const TestimonialsPage = () => {
             >
               Testimonials
             </h2>
+
+            <p className="text-base md:text-lg">
+              Want to see more reviews?{" "}
+              <Link
+                className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 underline transition-colors duration-200"
+                href="https://www.linkedin.com/in/sameh7ammad/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Click here
+              </Link>
+              .
+            </p>
           </div>
-          <p className="text-base md:text-lg">
-            Want to see more reviews?{" "}
-            <Link
-              className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 underline transition-colors duration-200"
-              href="https://www.linkedin.com/in/sameh7ammad/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here
-            </Link>
-            .
-          </p>
+          <div className="sm:hidden flex justify-center items-center w-full">
+            <Socials />
+          </div>
         </motion.div>
       </div>
 

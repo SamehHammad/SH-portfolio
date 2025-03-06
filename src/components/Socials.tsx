@@ -25,35 +25,35 @@ const Socials = React.memo(() => {
       <Link
         aria-label="Visit my GitHub profile"
         href={"https://github.com/SamehHammad"}
-        className="hover:text-accent transition-all duration-300"
+        className="hover:text-primary-500 transition-all duration-300"
       >
         <FaGithub />
       </Link>
       <Link
         aria-label="Visit my LinkedIn profile"
         href={"https://www.linkedin.com/in/sameh-hammad-b20019246/"}
-        className="hover:text-accent transition-all duration-300"
+        className="hover:text-primary-500 transition-all duration-300"
       >
         <FaLinkedin />
       </Link>
       <Link
         aria-label="Send me a WhatsApp message"
         href={"https://wa.me/01112967597"}
-        className="hover:text-accent transition-all duration-300"
+        className="hover:text-primary-500 transition-all duration-300"
       >
         <RiWhatsappLine />
       </Link>
       <Link
         aria-label="Visit my Twitter profile"
         href={"https://twitter.com/SamehHammad17"}
-        className="hover:text-accent transition-all duration-300"
+        className="hover:text-primary-500 transition-all duration-300"
       >
         <LuTwitter />
       </Link>
       <Link
         aria-label="Visit my Facebook profile"
         href={"https://www.facebook.com/same7.hammad/"}
-        className="hover:text-accent transition-all duration-300"
+        className="hover:text-primary-500 transition-all duration-300"
       >
         <FaFacebook />
       </Link>

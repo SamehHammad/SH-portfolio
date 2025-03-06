@@ -3,8 +3,9 @@ import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../variants";
+import Socials from "@/components/Socials";
 
-const Page = () => {
+const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto max-w-[90%] py-32 text-center xl:text-left flex items-center justify-center min-h-screen">
@@ -18,7 +19,7 @@ const Page = () => {
             exit="hidden"
             className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-12"
           >
-             Let&apos;s
+            Let&apos;s
             <span className="text-primary-500">connect.</span>
           </motion.h2>
 
@@ -65,24 +66,29 @@ const Page = () => {
             ></textarea>
 
             {/* button */}
-            <button
-              aria-label="Send message"
-              className="relative w-fit mx-auto sm:mx-0 px-8 py-3 rounded-full bg-primary-500 
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <button
+                aria-label="Send message"
+                className="relative w-fit mx-auto sm:mx-0 px-8 py-3 rounded-full bg-primary-500 
               text-white font-medium transition-all duration-300 flex items-center justify-center 
               overflow-hidden group shadow-md hover:shadow-lg"
-            >
-              <span
-                className="relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 
-                transition-all duration-300"
               >
-                Send Message
-              </span>
-              <BsArrowRight
-                className="absolute z-10 -translate-y-[120%] opacity-0 
+                <span
+                  className="relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 
+                transition-all duration-300"
+                >
+                  Send Message
+                </span>
+                <BsArrowRight
+                  className="absolute z-10 -translate-y-[120%] opacity-0 
                 group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 
                 text-[22px]"
-              />
-            </button>
+                />
+              </button>
+              <div className="sm:hidden flex items-center">
+                <Socials />
+              </div>
+            </div>
           </motion.form>
         </div>
       </div>
@@ -90,4 +96,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ContactPage;
