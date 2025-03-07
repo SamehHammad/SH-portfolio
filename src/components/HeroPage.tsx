@@ -31,7 +31,6 @@ function HeroPageContent() {
     "/bg-code.png",
     "/dash.avif",
     "/task.avif",
-    "/bg2.png",
     "/tt.png",
   ];
 

@@ -1,5 +1,11 @@
+"use client"; // Add this at the top for Client Component
+
 import React from "react";
 import ServiceCard, { ServiceData } from "./ServiceCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 interface SEOProps {
   services: ServiceData[]; // تحديد نوع الخدمات كمصفوفة من ServiceData
@@ -7,10 +13,42 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({ services }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {services?.map((service) =>
-        service._id ? <ServiceCard service={service} key={service._id} /> : null
-      )}
+    <div className="px-4 md:px-8 flex justify-center">
+      <div className="w-full max-w-7xl">
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            480: { slidesPerView: 1.5, spaceBetween: 20 },
+            830: { slidesPerView: 2, spaceBetween: 25 },
+            1024: { slidesPerView: 2, spaceBetween: 30 },
+            1300: { slidesPerView: 3, spaceBetween: 30 },
+          }}
+          className="mySwiper pb-16"
+        >
+          {services?.map((service) =>
+            service._id ? (
+              <SwiperSlide
+                key={service._id}
+                className="py-6 flex justify-center"
+              >
+                <div className="w-full max-w-sm md:max-w-md lg:max-w-lg">
+                  <ServiceCard service={service} />
+                </div>
+              </SwiperSlide>
+            ) : null
+          )}
+        </Swiper>
+      </div>
     </div>
   );
 };

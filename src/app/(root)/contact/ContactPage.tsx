@@ -8,7 +8,7 @@ import Socials from "@/components/Socials";
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto max-w-[90%] py-32 text-center xl:text-left flex items-center justify-center min-h-screen">
+      <div className="container mx-auto max-w-[90%] text-center xl:text-left flex items-center justify-center mt-20">
         {/* text & form container */}
         <div className="flex flex-col w-full max-w-[700px] bg-gray-300 dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           {/* heading */}

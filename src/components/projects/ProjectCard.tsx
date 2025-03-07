@@ -8,6 +8,7 @@ import { fadeIn } from "@/utils/motion";
 import Image from "next/image";
 import { EyeOpenIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 interface ProjectImageAsset {
   _ref: string;
@@ -143,7 +144,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
           {/* Overlay with Links */}
           <div className="absolute inset-0 flex items-center justify-center gap-4 p-3 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gray-900/60">
             {project.demo_url && (
-              <a
+              <Link
                 href={project.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -157,10 +158,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
                 `}
               >
                 <EyeOpenIcon className="w-6 h-6 text-gray-900 dark:text-gray-100" />
-              </a>
+              </Link>
             )}
             {project.code_url && (
-              <a
+              <Link
                 href={project.code_url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -174,7 +175,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
                 `}
               >
                 <GitHubLogoIcon className="w-6 h-6 text-gray-900 dark:text-gray-100" />
-              </a>
+              </Link>
             )}
           </div>
         </div>
@@ -183,7 +184,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
         <div className="p-6 flex flex-col flex-grow">
           <h3
             className={`
-              text-xl font-semibold mb-3 
+              text-lg font-semibold mb-3 
               line-clamp-1
               ${isDark ? "text-gray-100" : "text-gray-800"}
             `}
@@ -191,7 +192,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
             {project.title}
           </h3>
 
-          <div className="text-sm flex-grow">
+          <div className="text-xs flex-grow">
             <p
               className={`
                 ${isDark ? "text-gray-300" : "text-gray-600"}

@@ -4,7 +4,7 @@ import React from "react";
 import { metadata } from "../../../lib/testimonialsMeta";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import useTestimonials from "@/hooks/useTestimonials";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -80,10 +80,10 @@ const TestimonialsPage = () => {
       </div>
 
       {/* Testimonials Swiper */}
-      <div className="mt-12 px-4 md:px-8 flex justify-center">
+      <div className="px-4 md:px-8 flex justify-center">
         <div className="w-full max-w-7xl">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
             navigation={{
@@ -120,8 +120,6 @@ const TestimonialsPage = () => {
                 </div>
               </SwiperSlide>
             ))}
-            <div className="swiper-button-prev !text-white after:!text-lg md:after:!text-2xl" />
-            <div className="swiper-button-next !text-white after:!text-lg md:after:!text-2xl" />
           </Swiper>
         </div>
       </div>

@@ -60,7 +60,7 @@ const Tabs = ({ currSearchParams }: { currSearchParams: { [key: string]: string 
 
   return (
     <div className="min-h-screen transition-colors duration-300">
-      <div className="container mx-auto px-4 py-12 max-w-8xl">
+      <div className="px-4 py-12 sm:px-12">
         <div className="rounded-lg shadow-lg overflow-hidden">
           <div className="border-b border-gray-200 dark:border-gray-700">
             <nav

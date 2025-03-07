@@ -54,9 +54,9 @@ const TestimonialCard: React.FC<FeedbackCardProps> = ({
       tiltMaxAngleY={45}
       perspective={1000}
       scale={1}
-      className={`${cardBg} ${cardBorder} sm:w-[360px] h-[550px] p-10 rounded-3xl w-full flex flex-col gap-5 shadow-lg`}
+      className={`${cardBg} ${cardBorder} sm:w-[360px] min-h-[350px] h-auto p-10 rounded-3xl w-full flex flex-col gap-5 shadow-lg`}
     >
-      <div className="mt-7 flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-1">
         {imageUrl && (
           <img
             src={imageUrl}
@@ -78,7 +78,7 @@ const TestimonialCard: React.FC<FeedbackCardProps> = ({
       </div>
       <div className={`w-full h-[1px] ${dividerColor}`}></div>
       <div>
-        <p className={`${textColor} tracking-wider text-[18px] text-center`}>
+        <p className={`${textColor} tracking-wider text-xs md:text-sm  xl:text-[16px] text-center`}>
           {testimonial.comment}
         </p>
       </div>

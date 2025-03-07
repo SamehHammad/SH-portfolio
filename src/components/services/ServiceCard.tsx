@@ -35,7 +35,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <Tilt
-      className={`p-6 rounded-2xl shadow-lg transition duration-300 py-20 ${
+      className={`p-6 rounded-2xl shadow-lg transition duration-300 py-5 min-h-[300px] h-auto ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-900"
       }`}
     >
@@ -48,8 +48,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           height={64}
         />
       )}
-      <h3 className="text-xl font-bold text-center">{service.title}</h3>
-      <p className="text-sm text-center mt-2">{service.description}</p>
+      <h3 className="text-lg font-bold text-center">{service.title}</h3>
+      <p className="text-xs text-center mt-2">{service.description}</p>
     </Tilt>
   );
 };
