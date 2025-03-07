@@ -8,7 +8,8 @@ import { experienceSchema } from './experience'
 import { countersSchema } from './counters'
 import { testimonialsSchema } from './testimonials'
 import { servicesSchema } from './services'
+import { heroSliderSchema } from './heroSlider'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [  projectSchema, aboutSchema,skillsSchema,educationSchema,courseSchema , experienceSchema , countersSchema,testimonialsSchema ,servicesSchema],
+  types: [  projectSchema, aboutSchema,skillsSchema,educationSchema,courseSchema , experienceSchema , countersSchema,testimonialsSchema ,servicesSchema ,heroSliderSchema],
 }
