@@ -12,7 +12,9 @@ const ProjectsPage = () => {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
       <motion.div variants={textVariant()} className="text-center mb-5">
-        <p className="text-lg text-gray-600 font-medium dark:text-gray-50">My Work</p>
+        <p className="text-lg text-gray-600 font-medium dark:text-gray-50">
+          My Work
+        </p>
         <h2 className="text-4xl sm:text-5xl font-bold text-primary-500 my-4">
           Projects
         </h2>
@@ -33,8 +35,8 @@ const ProjectsPage = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className=" mx-auto mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-5">
+      <div className=" mx-auto mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-5 p-5">
           {projects?.map((project, index) => (
             <motion.div
               key={`project-${index}`}

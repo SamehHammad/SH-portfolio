@@ -30,7 +30,7 @@ interface FeedbackCardProps {
   isDark: boolean;
 }
 
-//================ FeedbackCard Component ================
+//================ TestimonialCard Component ================
 const TestimonialCard: React.FC<FeedbackCardProps> = ({
   testimonial,
   isDark,
@@ -40,10 +40,13 @@ const TestimonialCard: React.FC<FeedbackCardProps> = ({
     getSanityImageUrl(testimonial.image[0].asset._ref);
 
   // Define light and dark mode classes
-  const cardBg = isDark ? "bg-gray-800" : "bg-gray-100";
+  const cardBg = isDark ? "bg-gray-800 " : "bg-gray-100";
   const textColor = isDark ? "text-white" : "text-gray-800";
   const secondaryTextColor = isDark ? "text-gray-300" : "text-gray-600";
   const dividerColor = isDark ? "bg-slate-400" : "bg-slate-300";
+  const cardBorder = isDark
+    ? "border border-gray-700"
+    : "border border-gray-300";
 
   return (
     <Tilt
@@ -51,7 +54,7 @@ const TestimonialCard: React.FC<FeedbackCardProps> = ({
       tiltMaxAngleY={45}
       perspective={1000}
       scale={1}
-      className={`${cardBg} sm:w-[360px] h-[550px] p-10 rounded-3xl w-full flex flex-col gap-5`}
+      className={`${cardBg} ${cardBorder} sm:w-[360px] h-[550px] p-10 rounded-3xl w-full flex flex-col gap-5 shadow-lg`}
     >
       <div className="mt-7 flex flex-col items-center gap-1">
         {imageUrl && (

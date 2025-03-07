@@ -64,7 +64,7 @@ const Tabs = ({ currSearchParams }: { currSearchParams: { [key: string]: string 
         <div className="rounded-lg shadow-lg overflow-hidden">
           <div className="border-b border-gray-200 dark:border-gray-700">
             <nav
-              className="flex justify-center space-x-1 sm:space-x-4 p-4 overflow-x-auto"
+              className="flex justify-center gap-1 sm:gap-4 p-4 overflow-x-auto"
               aria-label="Tabs"
             >
               {tabs.map((tab) => (
@@ -75,7 +75,7 @@ const Tabs = ({ currSearchParams }: { currSearchParams: { [key: string]: string 
                     router.push(`/about?my=${tab.id}`);
                   }}
                   className={`
-                    relative py-2 px-4  text-[7px] sm:text-xs md:text-sm font-medium rounded-md
+                    relative py-2 px-2 text-[10px] md:text-sm font-medium rounded-md
                     transition-all duration-200 ease-in-out
                     ${
                       activeTab === tab.id

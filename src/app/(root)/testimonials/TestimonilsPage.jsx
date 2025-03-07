@@ -1,4 +1,5 @@
-"use client";
+"use client"; // Add this at the top for Client Component
+
 import React from "react";
 import { metadata } from "../../../lib/testimonialsMeta";
 import { motion } from "framer-motion";
@@ -18,7 +19,7 @@ import Socials from "@/components/Socials";
 const baseStyles = {
   sectionSubText: "text-sm uppercase tracking-wider",
   sectionHeadText: "text-3xl md:text-4xl font-bold",
-  padding: "p-6 md:p-8",
+  padding: "p-6 px-10 lg:px-20 md:p-8",
 };
 
 export { metadata };
@@ -27,20 +28,22 @@ const TestimonialsPage = () => {
   const { testimonials } = useTestimonials();
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const cardBg = isDark
+    ? "bg-gray-800 border border-gray-700"
+    : "bg-gray-100 border border-gray-300";
+
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 ${
-        isDark ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
-      }`}
+      className={`min-h-screen transition-colors duration-300 px-5 lg:px-20`}
     >
       {/* Header Section */}
       <div
-        className={`rounded-2xl ${baseStyles.padding} ${
-          isDark ? "bg-gray-800" : "bg-white"
-        } mt-12 mx-4 md:mx-8 shadow-lg`}
+        className={`rounded-2xl ${baseStyles.padding} ${cardBg} mt-12 mx-4 md:mx-8 shadow-lg`}
       >
         <motion.div
           variants={textVariant()}
+          initial="hidden"
+          animate="show"
           className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
         >
           <div className="flex flex-col">
@@ -77,57 +80,50 @@ const TestimonialsPage = () => {
       </div>
 
       {/* Testimonials Swiper */}
-      <div className="mt-12 px-4 md:px-8">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
-          slidesPerView={1}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 25,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 30,
-            },
-          }}
-          className="mySwiper pb-16"
-        >
-          {testimonials?.map((testimonial, index) => (
-            <SwiperSlide key={testimonial._id} className="py-6">
-              <TestimonialCard
-                index={index}
-                testimonial={testimonial}
-                isDark={isDark}
-              />
-            </SwiperSlide>
-          ))}
-
-          {/* Custom Navigation Buttons */}
-          <div className="swiper-button-prev !text-white after:!text-lg md:after:!text-2xl" />
-          <div className="swiper-button-next !text-white after:!text-lg md:after:!text-2xl" />
-        </Swiper>
+      <div className="mt-12 px-4 md:px-8 flex justify-center">
+        <div className="w-full max-w-7xl">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              480: { slidesPerView: 1.5, spaceBetween: 20 },
+              830: { slidesPerView: 2, spaceBetween: 25 },
+              1024: { slidesPerView: 2, spaceBetween: 30 },
+              1300: { slidesPerView: 3, spaceBetween: 30 },
+            }}
+            className="mySwiper pb-16"
+          >
+            {testimonials?.map((testimonial, index) => (
+              <SwiperSlide
+                key={testimonial._id}
+                className="py-6 flex justify-center"
+              >
+                <div className="w-full max-w-sm md:max-w-md lg:max-w-lg">
+                  <TestimonialCard
+                    index={index}
+                    testimonial={testimonial}
+                    isDark={isDark}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+            <div className="swiper-button-prev !text-white after:!text-lg md:after:!text-2xl" />
+            <div className="swiper-button-next !text-white after:!text-lg md:after:!text-2xl" />
+          </Swiper>
+        </div>
       </div>
     </div>
   );

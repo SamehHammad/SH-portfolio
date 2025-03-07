@@ -20,7 +20,7 @@ const Certificates = () => {
   const { courses } = useSkills() as { courses: Course[] | undefined };
 
   return (
-    <div className="relative py-5 bg-gradient-to-b from-transparent-100 p-8">
+    <div className="relative py-5 bg-gradient-to-b from-transparent-100 ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center">
         {courses?.map((course, idx) => (
           <CertificateCard

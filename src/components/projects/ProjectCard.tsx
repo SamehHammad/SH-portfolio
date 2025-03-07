@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useMemo } from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
@@ -43,27 +44,28 @@ interface ProjectCardProps {
 }
 
 const colorClasses = [
-  "text-red-400",
-  "text-blue-400",
-  "text-green-400",
-  "text-yellow-400",
-  "text-purple-400",
-  "text-pink-400",
-  "text-indigo-400",
-  "text-teal-400",
-  "text-orange-400",
-  "text-cyan-400",
+  "text-red-500",
+  "text-blue-500",
+  "text-green-500",
+  "text-yellow-500",
+  "text-purple-500",
+  "text-pink-500",
+  "text-indigo-500",
+  "text-teal-500",
+  "text-orange-500",
+  "text-cyan-500",
 ];
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
   const [showMore, setShowMore] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const { theme } = useTheme();
-  
-  const maxChars = 100;
+  const isDark = theme === "dark";
+
+  const maxChars = 120; // Slightly increased for better initial readability
   const needsShowMore = project.description.length > maxChars;
-  const displayText = showMore 
-    ? project.description.slice(0, 200)
+  const displayText = showMore
+    ? project.description
     : `${project.description.substring(0, maxChars)}${needsShowMore ? "..." : ""}`;
 
   const images = project.image.map((img) => getSanityImageUrl(img.asset._ref));
@@ -77,36 +79,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
   const tagColors = useMemo(() => {
     const colors: { [key: string]: string } = {};
     project.skills_tags.forEach((tag) => {
-      const colorIndex = Math.abs(tag.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)) % colorClasses.length;
+      const colorIndex =
+        Math.abs(
+          tag.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)
+        ) % colorClasses.length;
       colors[tag] = colorClasses[colorIndex];
     });
     return colors;
   }, [project.skills_tags]);
 
   return (
-    <motion.div 
+    <motion.div
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-      className="w-full max-w-[360px] mx-auto mb-5"
+      className="w-full max-w-[360px] mx-auto mb-8"
     >
       <Tilt
-        tiltMaxAngleX={25}
-        tiltMaxAngleY={25}
-        perspective={1000}
-        scale={1.02}
+        tiltMaxAngleX={20}
+        tiltMaxAngleY={20}
+        perspective={900}
+        scale={1.03}
+        transitionSpeed={450}
         className={`
-          w-[360px] h-[480px] 
-          rounded-2xl overflow-hidden
-          shadow-xl transition-all duration-300
+          w-full h-auto 
+          rounded-xl overflow-hidden
+          shadow-lg transition-all duration-300
           flex flex-col
-          ${theme === "dark" 
-            ? "bg-gray-800 text-gray-100 border border-gray-800" 
-            : "bg-gray-200 text-gray-900 border border-gray-200"
+          ${
+            isDark
+              ? "bg-gray-900 text-gray-100 border border-gray-800"
+              : "bg-white text-gray-900 border border-gray-200"
           }
         `}
       >
-        {/* Fixed Image Container */}
-        <div 
-          className="relative w-full h-[200px] flex-shrink-0"
+        {/* Image Container */}
+        <div
+          className="relative w-full h-[220px] flex-shrink-0 bg-gray-100 dark:bg-gray-800"
           onMouseEnter={handleHover}
         >
           {images?.length > 0 ? (
@@ -118,37 +125,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
                 fill
                 className={`
                   object-cover 
-                  transition-opacity duration-500
+                  transition-opacity duration-700 ease-in-out
                   ${imgIndex === activeImage ? "opacity-100" : "opacity-0"}
                 `}
-                quality={85}
+                quality={90}
                 priority={imgIndex === 0}
               />
             ))
           ) : (
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-500">No Image</span>
+            <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
+              <span className="text-gray-500 dark:text-gray-400 font-medium">
+                No Image Available
+              </span>
             </div>
           )}
 
           {/* Overlay with Links */}
-          <div className="absolute inset-0 flex justify-between p-3 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/40">
+          <div className="absolute inset-0 flex items-center justify-center gap-4 p-3 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gray-900/60">
             {project.demo_url && (
               <a
                 href={project.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  w-10 h-10 rounded-full
+                  w-12 h-12 rounded-full
                   flex items-center justify-center
-                  ${theme === "dark" 
-                    ? "bg-gray-800 hover:bg-gray-700" 
-                    : "bg-white hover:bg-gray-100"
-                  }
-                  transition-transform duration-200 hover:scale-110
+                  bg-white/90 dark:bg-gray-800/90 
+                  hover:bg-white dark:hover:bg-gray-700
+                  transition-all duration-200 hover:scale-105
+                  shadow-md
                 `}
               >
-                <EyeOpenIcon className="w-5 h-5" />
+                <EyeOpenIcon className="w-6 h-6 text-gray-900 dark:text-gray-100" />
               </a>
             )}
             {project.code_url && (
@@ -157,35 +165,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  w-10 h-10 rounded-full
+                  w-12 h-12 rounded-full
                   flex items-center justify-center
-                  ${theme === "dark" 
-                    ? "bg-gray-800 hover:bg-gray-700" 
-                    : "bg-white hover:bg-gray-100"
-                  }
-                  transition-transform duration-200 hover:scale-110
+                  bg-white/90 dark:bg-gray-800/90 
+                  hover:bg-white dark:hover:bg-gray-700
+                  transition-all duration-200 hover:scale-105
+                  shadow-md
                 `}
               >
-                <GitHubLogoIcon className="w-5 h-5" />
+                <GitHubLogoIcon className="w-6 h-6 text-gray-900 dark:text-gray-100" />
               </a>
             )}
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold mb-2 line-clamp-1">
+        <div className="p-6 flex flex-col flex-grow">
+          <h3
+            className={`
+              text-xl font-semibold mb-3 
+              line-clamp-1
+              ${isDark ? "text-gray-100" : "text-gray-800"}
+            `}
+          >
             {project.title}
           </h3>
-          
-          <div className="text-sm text-gray-500 dark:text-gray-400 flex-grow">
-            <p>{displayText}</p>
+
+          <div className="text-sm flex-grow">
+            <p
+              className={`
+                ${isDark ? "text-gray-300" : "text-gray-600"}
+                leading-relaxed
+              `}
+            >
+              {displayText}
+            </p>
             {needsShowMore && (
               <button
                 onClick={() => setShowMore(!showMore)}
                 className={`
-                  mt-2 text-sm font-medium text-primary-500
-                  transition-colors duration-200
+                  mt-3 text-sm font-medium text-primary-500 transition-colors duration-200
                 `}
               >
                 {showMore ? "Show Less" : "Show More"}
@@ -199,13 +218,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
               <span
                 key={`${project.title}-${tag}`}
                 className={`
-                  text-xs font-medium px-2 py-1 
+                  text-xs font-medium px-2.5 py-1
                   rounded-full
                   ${tagColors[tag]}
-                  ${theme === "dark" 
-                    ? "bg-gray-800" 
-                    : "bg-gray-100"
-                  }
+                  ${isDark ? "bg-gray-800" : "bg-gray-100"}
+                  shadow-sm
                 `}
               >
                 {tag}

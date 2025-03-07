@@ -1,10 +1,11 @@
-"use client";
-import React, { useRef } from "react";
+"use client"; // Mark as Client Component
+
+import React, { useRef, useState } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { motion, useInView } from "framer-motion"; // Import useInView
+import { motion, useInView } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
 import { styles } from "@/utils/style/styles";
 import { textVariant } from "@/utils/motion";
@@ -29,28 +30,37 @@ interface ExperienceCardProps {
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   experience,
+  isDark,
 }) => {
   const logoUrl =
     experience?.logos?.[0]?.asset?._ref &&
     getSanityImageUrl(experience.logos[0].asset._ref);
 
-  // Create a ref for the element to track
   const ref = useRef(null);
-  // Use useInView to detect when the element is in view
-  const isInView = useInView(ref, { once: true }); // 'once: true' ensures it triggers only once
+  const isInView = useInView(ref, { once: true });
+
+  // Add Show More/Show Less state
+  const [showMore, setShowMore] = useState(false);
+  const maxChars = 100; // Adjust this value as needed
+  const needsShowMore = experience.description.length > maxChars;
+  const displayText = showMore
+    ? experience.description
+    : `${experience.description.substring(0, maxChars)}${needsShowMore ? "..." : ""}`;
 
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#6B7280",
-        color: "#FF7000",
+        background: isDark ? "#1F2937" : "#6B7280", // Adjusted for better contrast
+        color: "#D1D5DB",
       }}
-      visible={isInView} // Pass the boolean value from useInView
-      contentArrowStyle={{ borderRight: "7px solid  #6B7280" }}
+      visible={isInView}
+      contentArrowStyle={{
+        borderRight: `7px solid ${isDark ? "#1F2937" : "#6B7280"}`,
+      }}
       date={experience.date}
       iconStyle={{ background: "black" }}
       icon={
-        <div className=" flex justify-center items-center w-full h-full">
+        <div className="flex justify-center items-center w-full h-full">
           <img
             src={logoUrl}
             alt={experience.company}
@@ -61,15 +71,27 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       ref={ref}
     >
       <div className="flex flex-col items-center gap-3">
-        <h3 className="text-gray-950 dark:gray-800 text-[22px] font-bold">
+        <h3 className="text-gray-950 dark:text-gray-100 text-[22px] font-bold">
           {experience.company}
         </h3>
         <p
-          className="text-gray-50 dark:text-white text-[16px] font-semibold"
+          className="text-gray-50 dark:text-gray-300 text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
-          {experience.description}
+          {displayText}
         </p>
+        {needsShowMore && (
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className={`
+              mt-2 text-sm font-medium text-primary-500
+              hover:text-primary-600 dark:hover:text-primary-400
+              transition-colors duration-200
+            `}
+          >
+            {showMore ? "Show Less" : "Show More"}
+          </button>
+        )}
       </div>
     </VerticalTimelineElement>
   );
@@ -87,11 +109,11 @@ const Experience: React.FC = () => {
 
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} initial="hidden" animate="show">
         <p
-          className={`${styles.sectionSubText} text-center text-black dark:text-white font-bold text-xl `}
+          className={`${styles.sectionSubText} text-center text-black dark:text-white font-bold text-xl`}
         >
-       Work Experience.
+          Work Experience.
         </p>
         <h2
           className={`${styles.sectionHeadText} text-center text-black dark:text-white font-semibold text-md`}
@@ -100,10 +122,8 @@ const Experience: React.FC = () => {
         </h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline
-          lineColor={isDark ? "white" : "#FF7000"} // Red in both modes, but you could customize
-        >
+      <div className="flex flex-col">
+        <VerticalTimeline lineColor={isDark ? "white" : "#FF7000"}>
           {experiencesArray.map((experience: Experience, index: number) => (
             <ExperienceCard
               key={`experience-${index}`}
