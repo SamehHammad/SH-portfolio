@@ -100,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
         scale={1.03}
         transitionSpeed={450}
         className={`
-          w-full h-auto 
+          w-full h-auto min-h-[500px]
           rounded-xl overflow-hidden
           shadow-lg transition-all duration-300
           flex flex-col
