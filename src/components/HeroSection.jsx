@@ -12,6 +12,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import HeroPage from "./HeroPage";
+import Loader from "../components/home/Loader";
 
 // Preload the 3D model
 useGLTF.preload("./3dModel/mac-draco.glb");
@@ -130,7 +131,7 @@ export default function HeroSection() {
         gl={{ antialias: false, powerPreference: "low-power" }}
       >
         <pointLight position={[10, 10, 10]} intensity={1.5} />
-        <Suspense fallback={null}>
+        <Suspense  fallback={<Loader />}>
           <group rotation={[0, Math.PI, 0]}>
             <Model
               position={[0, 1, 0]}
