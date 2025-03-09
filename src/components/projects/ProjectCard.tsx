@@ -105,16 +105,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
           rounded-xl overflow-hidden
           shadow-lg transition-all duration-300
           flex flex-col
-          ${
-            isDark
-              ? "bg-gray-900 text-gray-100 border border-gray-800"
-              : "bg-white text-gray-900 border border-gray-200"
-          }
+            bg-[#f3f4f6] dark:bg-[#131a29] dark:text-gray-100 border border-gray-800
         `}
       >
         {/* Image Container */}
         <div
-          className="relative w-full h-[220px] flex-shrink-0 bg-gray-100 dark:bg-gray-800"
+          className="relative w-full h-[200px] flex-shrink-0 bg-gray-100 dark:bg-gray-800"
           onMouseEnter={handleHover}
         >
           {images?.length > 0 ? (

@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { motion } from "framer-motion";
-import { fadeIn, textVariant } from "@/utils/motion";
+import { fadeIn } from "@/utils/motion";
 import ProjectCard from "@/components/projects/ProjectCard";
 import useProjects from "@/hooks/useProjects";
 
@@ -15,30 +15,33 @@ const ProjectsPage = () => {
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      {/* Header Section */}
-      <motion.div variants={textVariant()} className="text-center mb-3">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="text-center mb-6"
+      >
         <p className="text-lg text-gray-600 font-medium dark:text-gray-50">
           My Work
         </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-primary-500 ">
+        <h2 className="text-4xl sm:text-5xl font-bold text-primary-500">
           Projects
         </h2>
       </motion.div>
 
-      {/* Description Section */}
       <div className="max-w-7xl mx-auto">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="text-center text-gray-600 text-xs md:text-sm xl:text-lg leading-relaxed dark:text-gray-100"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center text-gray-600 text-xs md:text-sm xl:text-lg leading-tight dark:text-gray-100"
         >
-          Following projects showcase my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos. These reflect my ability to
-          solve complex problems, work with different technologies, and manage
-          projects effectively.
+          These projects highlight my skills and experience through real-world
+          examples, showcasing my ability to tackle complex challenges with
+          diverse technologies. Each includes links to code repositories and
+          live demos for further exploration.
         </motion.p>
       </div>
-
       {/* Projects Swiper */}
       <div className="px-4 md:px-8 flex justify-center">
         <div className="w-full max-w-7xl">

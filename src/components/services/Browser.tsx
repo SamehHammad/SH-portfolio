@@ -4,6 +4,7 @@ import React from "react";
 import ServiceCard, { ServiceData } from "./ServiceCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -13,7 +14,20 @@ interface ResponsiveProps {
 
 const Responsive: React.FC<ResponsiveProps> = ({ services }) => {
   return (
-    <div className="px-4 md:px-8 flex justify-center">
+    <div className="px-4 md:px-8 flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center w-full my-5">
+        <motion.p
+          className="text-sm md:text-lg  text-gray-800 dark:text-gray-100 text-center max-w-5xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          Enhance browser compatibility and user experience by implementing
+          JavaScript polyfills with Babel and Modernizr, automating
+          cross-browser testing using tools like BrowserStack and Selenium, and
+          applying progressive enhancement with graceful degradation techniques.
+        </motion.p>
+      </div>
       <div className="w-full max-w-7xl">
         <Swiper
           modules={[Pagination, Autoplay]}
@@ -36,10 +50,7 @@ const Responsive: React.FC<ResponsiveProps> = ({ services }) => {
           className="mySwiper pb-16"
         >
           {services?.map((service) => (
-            <SwiperSlide
-              key={service._id}
-              className="py-6 flex justify-center"
-            >
+            <SwiperSlide key={service._id} className="py-6 flex justify-center">
               <div className="w-full max-w-sm md:max-w-md lg:max-w-lg">
                 <ServiceCard service={service} />
               </div>

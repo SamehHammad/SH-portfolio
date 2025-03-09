@@ -35,8 +35,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <Tilt
-      className={`p-6 rounded-2xl shadow-lg transition duration-300 py-5 min-h-[300px] h-auto ${
-        theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-300 text-gray-900"
+      className={`p-4 rounded-2xl shadow-lg transition duration-300 py-5 min-h-[300px] h-auto ${
+        theme === "dark"
+          ? "bg-[#131a29] text-white"
+          : "bg-[#f3f4f6] text-gray-900"
       }`}
     >
       {imageUrl && (

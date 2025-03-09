@@ -7,8 +7,8 @@ import Socials from "@/components/Socials";
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto max-w-[90%] text-center xl:text-left flex items-center justify-center mt-20">
+    <div className="min-h-screen">
+      <div className="container mx-auto max-w-[90%] text-center xl:text-left flex items-center justify-center mt-16 md:mt-24">
         {/* text & form container */}
         <div className="flex flex-col w-full max-w-[700px] bg-gray-300 dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           {/* heading */}
@@ -17,7 +17,7 @@ const ContactPage = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-12"
+            className="text-2xl md:text-4xl font-bold text-gray-800 dark:text-white mb-8 md:mb-12"
           >
             Let&apos;s
             <span className="text-primary-500">connect.</span>
@@ -36,14 +36,14 @@ const ContactPage = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                className="flex-1 px-4 py-2 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                 bg-white text-primary-500 placeholder-gray-400 
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                className="flex-1 px-4 py-2 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                 bg-white text-primary-500 placeholder-gray-400 
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
               />
@@ -51,18 +51,18 @@ const ContactPage = () => {
 
             <input
               type="text"
-              placeholder="Subject" // Fixed 'tobic' typo to 'Subject'
-              className="px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+              placeholder="Subject"
+              className="px-4 py-2 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 
               bg-white text-primary-500 placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
             />
 
             <textarea
               placeholder="Your message"
-              className="px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+              className="px-4 py-2 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 
               bg-white text-primary-500 placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 
-              h-40 resize-y"
+              h-28 md:h-40 resize-y"
             ></textarea>
 
             {/* button */}

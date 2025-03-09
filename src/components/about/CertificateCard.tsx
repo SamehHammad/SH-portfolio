@@ -87,13 +87,13 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
                 width={280}
                 height={200}
                 quality={10}
-                className="w-full h-40 object-cover rounded-sm"
+                className="w-full h-52 object-cover rounded-sm"
                 loading="lazy"
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgAB/0z6RwAAAABJRU5ErkJggg=="
               />
             )}
-            <h3 className="text-lg font-semibold text-center text-gray-800">
+            <h3 className="text-sm md:text-lg font-semibold text-center text-gray-800">
               {course.title}
             </h3>
             <div className="relative mt-2 inline-block">
@@ -117,7 +117,7 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
             </div>
           </div>
           {/* Frame */}
-          <div className="absolute inset-0 border-4 border-yellow-400/40 rounded-lg" />
+          <div className="absolute inset-0 border-4 border-primary-500 rounded-lg" />
         </div>
       </div>
     </Tilt>

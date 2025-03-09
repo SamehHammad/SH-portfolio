@@ -50,8 +50,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: isDark ? "#1F2937" : "#6B7280", // Adjusted for better contrast
-        color: "#D1D5DB",
+        background: isDark ? "#131a29" : "#f3f4f6", // Adjusted for better contrast
+        color: isDark ? "#f3f4f6" : "#131a29",
+        boxShadow: "5px 5px 10px 5px rgba(0, 0, 0, 0.1)",
       }}
       visible={isInView}
       contentArrowStyle={{
@@ -71,11 +72,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       ref={ref}
     >
       <div className="flex flex-col items-center gap-3">
-        <h3 className="text-gray-950 dark:text-gray-100 text-[22px] font-bold">
+        <h3 className="text-gray-800 dark:text-gray-100 text-[22px] font-bold">
           {experience.company}
         </h3>
         <p
-          className="text-gray-50 dark:text-gray-300 text-[16px] font-semibold"
+          className="text-gray-800 dark:text-gray-100  text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
           {displayText}
@@ -110,16 +111,11 @@ const Experience: React.FC = () => {
   return (
     <>
       <motion.div variants={textVariant()} initial="hidden" animate="show">
-        <p
-          className={`${styles.sectionSubText} text-center text-black dark:text-white font-bold text-xl`}
+        <h1
+          className={`${styles.sectionSubText} text-center text-primary-500 font-bold text-xl`}
         >
           Work Experience.
-        </p>
-        <h2
-          className={`${styles.sectionHeadText} text-center text-black dark:text-white font-semibold text-md`}
-        >
-          Work Experience.
-        </h2>
+        </h1>
       </motion.div>
 
       <div className="flex flex-col">

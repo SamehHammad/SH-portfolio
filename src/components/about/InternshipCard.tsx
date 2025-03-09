@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import Tilt from "react-parallax-tilt";
 import React, { memo } from "react";
+import Link from "next/link";
 
 // Define the Education interface
 interface Education {
@@ -18,25 +19,26 @@ interface InternshipProps {
 const InternshipCard = memo<InternshipProps>(({ education }) => {
   return (
     <Tilt
-      tiltMaxAngleX={45}
-      tiltMaxAngleY={45}
+      tiltMaxAngleX={12}
+      tiltMaxAngleY={12}
       perspective={1000}
-      scale={1}
-      className=""
+      scale={1.05}
+      className="transition-transform duration-500 ease-in-out"
     >
-      <div
-        // Removed key from here since it's already on the parent component
-        className="p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800/70 transition-colors duration-300 w-full flex justify-between"
-      >
-        <div className="flex flex-wrap items-center justify-between gap-2 w-full">
-          <div className="flex items-center gap-2 md:gap-4 justify-between w-full">
-            <h3 className="text-xs md:text-lg font-semibold text-white text-start">
-              {education.name}
-            </h3>
-            <span className="px-2 py-1 text-xs md:text-sm rounded-full bg-accent/20 dark:text-primary-500 shadow-sm whitespace-nowrap">
-              {education.date}
-            </span>
-          </div>
+      <div className="p-6 rounded-lg bg-gray-100 border border-gray-300  bg-gradient-to-r  dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transform transition-all duration-300 w-full flex flex-col justify-between space-y-4">
+        <div className="flex flex-col items-start justify-between gap-2 w-full">
+          <h3 className="text-lg md:text-xl font-semibold dark:text-primary-100 leading-tight">
+            {education.name}
+          </h3>
+          <span className="px-3 py-1 text-sm md:text-md rounded-full bg-accent/30 text-primary-500 shadow-md">
+            {education.date}
+          </span>
+        </div>
+        <div className="w-full text-sm text-gray-400">
+          <p className="leading-relaxed">
+            Explore more about my internship experiences and projects I worked
+            on during this period. <Link href={"/projects"} className="underline text-primary-500 tracking-wider leading-8">click here</Link>
+          </p>
         </div>
       </div>
     </Tilt>
