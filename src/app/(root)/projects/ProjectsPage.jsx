@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -11,7 +11,7 @@ import ProjectCard from "@/components/projects/ProjectCard";
 import useProjects from "@/hooks/useProjects";
 import { useSearchParams } from "next/navigation";
 
-// Move this outside the component to avoid recalculation
+//================ تصفية المشاريع ================
 const filterProjects = (projects, organization) => {
   if (!projects) return [];
   if (!organization) return projects;
@@ -24,7 +24,14 @@ const filterProjects = (projects, organization) => {
 const ProjectsPage = () => {
   const { projects } = useProjects();
   const searchParams = useSearchParams();
-  const organization = searchParams?.get("intern");
+  
+  //================ إدارة حالة الفلتر ================
+  const [organization, setOrganization] = useState(null);
+
+  useEffect(() => {
+    setOrganization(searchParams?.get("intern"));
+  }, [searchParams]);
+
   const displayProjects = filterProjects(projects, organization);
 
   return (
