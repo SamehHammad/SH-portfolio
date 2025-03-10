@@ -51,5 +51,10 @@ export const projectSchema = defineType({
             title: 'Video URL',
             type: 'url',
         }),
+        defineField({
+            name: 'organization',
+            title: 'organization',
+            type: 'string',
+        }),
     ]
 });

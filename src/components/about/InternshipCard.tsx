@@ -37,7 +37,7 @@ const InternshipCard = memo<InternshipProps>(({ education }) => {
         <div className="w-full text-sm text-gray-400">
           <p className="leading-relaxed">
             Explore more about my internship experiences and projects I worked
-            on during this period. <Link href={"/projects"} className="underline text-primary-500 tracking-wider leading-8">click here</Link>
+            on during this period. <Link href={education.name.includes("ITI")?"/projects?intern=iti":"/projects?intern=sef"} className="underline text-primary-500 tracking-wider leading-8">click here</Link>
           </p>
         </div>
       </div>
