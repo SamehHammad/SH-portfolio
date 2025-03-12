@@ -51,6 +51,7 @@ const Popup: React.FC = () => {
           <Link
             href="#"
             onClick={handleDownloadCV}
+            aria-label="cv download"
             className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-yellow-800 transition duration-300 font-medium text-sm sm:text-base"
           >
             Download CV

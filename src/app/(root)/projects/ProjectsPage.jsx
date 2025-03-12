@@ -49,6 +49,7 @@ const ProjectsPage = () => {
               <Link
                 href={"/projects"}
                 className="interactive-link font-semibold"
+                rel="footnote"
               >
                 all projects
               </Link>

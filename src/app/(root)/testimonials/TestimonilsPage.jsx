@@ -49,8 +49,9 @@ const TestimonialsPage = () => {
                   href="https://www.linkedin.com/in/sameh7ammad/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="more reviews"
                 >
-                  Click here
+                  Click here.
                 </Link>
                 .
               </p>

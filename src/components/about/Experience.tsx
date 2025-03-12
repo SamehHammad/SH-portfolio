@@ -88,7 +88,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               transition-colors duration-200
             `}
           >
-            {showMore ? "Show Less" : "Show More"}
+            {showMore ? "Show Less." : "Show More."}
           </button>
         )}
         <div className="w-full ">
@@ -98,8 +98,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <Link
               href={`/projects?org=${experience.org}`}
               className="interactive-link"
+              aria-label="explore more internships"
             >
-              click here
+              click here.
             </Link>
           </p>
         </div>

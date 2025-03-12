@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Logo = ({ style }: { style: string }) => {
   return (
-    <Link href={"/"}>
+    <Link href={"/"} aria-label="logo">
       <div className="flex flex-col items-center">
         <Image
           src={"/logo2.svg"}

@@ -40,6 +40,7 @@ const NavLinks = ({
                 : "text-dark300_light900",
               "flex items-center justify-start gap-4 bg-transparent p-4"
             )}
+            aria-label="navlinks label"
           >
             <Image
               src={item.imgURL}

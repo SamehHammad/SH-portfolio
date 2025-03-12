@@ -42,8 +42,9 @@ const InternshipCard = memo<InternshipProps>(({ education }) => {
             <Link
               href={`/projects?org=${education.org}` }
               className="interactive-link"
+              aria-label="explore more projects"
             >
-              click here
+              click here.
             </Link>
           </p>
         </div>

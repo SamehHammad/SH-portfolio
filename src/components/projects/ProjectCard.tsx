@@ -131,6 +131,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
                 href={project.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="demo url"
                 className="w-12 h-12 rounded-full flex items-center justify-center bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 shadow-md"
               >
                 <EyeOpenIcon className="w-6 h-6 text-gray-900 dark:text-gray-100" />
@@ -140,6 +141,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project }) => {
               <Link
                 href={project.code_url}
                 target="_blank"
+                aria-label="code url"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full flex items-center justify-center bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 shadow-md"
               >
