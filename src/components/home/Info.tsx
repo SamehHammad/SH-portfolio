@@ -4,14 +4,8 @@ import { motion } from "framer-motion";
 import useInfo from "../../hooks/useInfo";
 import { fadeIn } from "../variants";
 import ProjectsBtn from "./ProjectsBtn";
+import { UserInfo } from "@/utils/types";
 
-// Define the type for the user info
-type UserInfo = {
-  name?: string;
-  title?: string;
-  description?: string;
-  image?: { asset: { _ref: string } }[];
-};
 
 const Info = () => {
   // Use the useInfo hook and type the returned data

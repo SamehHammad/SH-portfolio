@@ -2,11 +2,8 @@ import React from "react";
 import InternshipCard from "./InternshipCard";
 import useSkills from "@/hooks/useSkills";
 import { motion } from "framer-motion";
-interface Education {
-  _id: string;
-  name: string;
-  date: string;
-}
+import { Education } from "@/utils/types";
+
 
 const Internships = () => {
   // Type the useSkills hook return value

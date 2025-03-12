@@ -2,28 +2,9 @@ import { getSanityImageUrl } from "@/lib/helper";
 import React from "react";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
+import { ServiceCardProps } from "@/utils/types";
 
-//================ Type Definitions ================
-interface IconData {
-  _type: string;
-  _key: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-}
 
-export interface ServiceData {
-  _id: string;
-  title: string;
-  description: string;
-  icon: IconData[] | null;
-  serviceType: string;
-}
-
-interface ServiceCardProps {
-  service: ServiceData;
-}
 
 //================ ServiceCard Component ================
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {

@@ -8,28 +8,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import { FeedbackCardProps } from "@/utils/types";
 
-//================ Type Definitions ================
-interface TestimonialData {
-  _id: string;
-  name: string;
-  position: string;
-  comment: string;
-  image: Array<{
-    _type: string;
-    _key: string;
-    asset: {
-      _ref: string;
-      _type: string;
-    };
-  }>;
-}
-
-interface FeedbackCardProps {
-  index: number;
-  testimonial: TestimonialData;
-  isDark: boolean;
-}
 
 //================ TestimonialCard Component ================
 const TestimonialCard: React.FC<FeedbackCardProps> = ({

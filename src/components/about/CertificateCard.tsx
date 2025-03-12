@@ -6,24 +6,8 @@ import React, { memo, useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import { getSanityImageUrl } from "@/lib/helper";
 import { PiCertificateFill } from "react-icons/pi";
+import { CertificateCardProps } from "@/utils/types";
 
-// Define prop types
-interface Course {
-  _id: string;
-  title: string;
-  url: string;
-  image?: {
-    asset: {
-      _ref: string;
-    };
-  }[];
-}
-
-interface CertificateCardProps {
-  course: Course;
-  index: number;
-  totalCourses: number;
-}
 
 // Dynamically import the Next.js Image component
 const Image = dynamic(() => import("next/image"), { ssr: false });

@@ -2,19 +2,7 @@
 import Tilt from "react-parallax-tilt";
 import React, { memo } from "react";
 import Link from "next/link";
-
-// Define the Education interface
-interface Education {
-  _id: string;
-  name: string;
-  date: string;
-  org: string;
-}
-
-// Define props interface
-interface InternshipProps {
-  education: Education;
-}
+import { InternshipProps } from "@/utils/types";
 
 // Type the component with memo
 const InternshipCard = memo<InternshipProps>(({ education }) => {
@@ -28,9 +16,7 @@ const InternshipCard = memo<InternshipProps>(({ education }) => {
     >
       <div className="card w-full flex flex-col justify-between gap-2">
         <div className="flex flex-col items-start justify-between gap-2 w-full">
-          <h3 className="card-title">
-            {education.name}
-          </h3>
+          <h3 className="card-title">{education.name}</h3>
           <span className="px-3 py-1 text-sm md:text-md rounded-full bg-accent/30 text-primary-500 shadow-md">
             {education.date}
           </span>
@@ -40,7 +26,7 @@ const InternshipCard = memo<InternshipProps>(({ education }) => {
             Explore more about my internship experiences and projects I worked
             on during this period.
             <Link
-              href={`/projects?org=${education.org}` }
+              href={`/projects?org=${education.org}`}
               className="interactive-link"
               aria-label="explore more projects"
             >

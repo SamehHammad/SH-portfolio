@@ -12,22 +12,7 @@ import useSkills from "@/hooks/useSkills";
 import { getSanityImageUrl } from "@/lib/helper";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-
-interface Experience {
-  date: string;
-  description: string;
-  icon: string;
-  company: string;
-  title: string;
-  org: string;
-  points: string[];
-  logos: { asset: { _ref: string } }[];
-}
-
-interface ExperienceCardProps {
-  experience: Experience;
-  isDark: boolean;
-}
+import type { Experience, ExperienceCardProps } from "@/utils/types";
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   experience,

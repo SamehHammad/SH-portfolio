@@ -6,17 +6,8 @@ import Responsive from "@/components/services/Responsive";
 import Performance from "@/components/services/Performance";
 import Browser from "@/components/services/Browser";
 import useServices from "@/hooks/useServices";
-import { ServiceData } from "@/components/services/ServiceCard";
+import { ResponsiveProps, ServiceData, Tab } from "@/utils/types";
 
-// Define tab type
-interface Tab {
-  id: string;
-  label: string;
-}
-
-interface SEOProps {
-  services: ServiceData[];
-}
 
 const Tabs = ({
   currSearchParams,
@@ -25,7 +16,7 @@ const Tabs = ({
 }) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>("responsive_design");
-  const { services } = useServices() as SEOProps; // Move useServices outside renderContent
+  const { services } = useServices() as ResponsiveProps; // Move useServices outside renderContent
 
   // Sync activeTab with search params and handle default redirect
   useEffect(() => {

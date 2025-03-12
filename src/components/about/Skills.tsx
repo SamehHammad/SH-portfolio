@@ -4,15 +4,7 @@ import useSkills from "@/hooks/useSkills";
 import { motion } from "framer-motion";
 import { getSanityImageUrl } from "@/lib/helper";
 import Image from "next/image";
-// Define the Technology interface with correct Sanity image structure
-interface Technology {
-  title: string;
-  icon: {
-    asset: {
-      _ref: string;
-    };
-  }[];
-}
+import { Technology } from "@/utils/types";
 
 const Skills: React.FC = () => {
   // Type the useSkills hook return value

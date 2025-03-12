@@ -9,40 +9,7 @@ import Image from "next/image";
 import { EyeOpenIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-
-interface ProjectImageAsset {
-  _ref: string;
-  _type: string;
-}
-
-interface ProjectImage {
-  _type: string;
-  _key: string;
-  asset: ProjectImageAsset;
-}
-
-interface ProjectSlug {
-  current: string;
-  _type: string;
-}
-
-interface Project {
-  _id: string;
-  title: string;
-  description: string;
-  code_url: string;
-  demo_url: string;
-  skills_tags: string[];
-  image: ProjectImage[];
-  slug: ProjectSlug;
-  _createdAt: string;
-  _updatedAt: string;
-}
-
-interface ProjectCardProps {
-  index: number;
-  project: Project;
-}
+import { ProjectCardProps } from "@/utils/types";
 
 const colorClasses = [
   "text-red-500",

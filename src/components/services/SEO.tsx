@@ -1,18 +1,16 @@
 "use client"; // Add this at the top for Client Component
 
 import React from "react";
-import ServiceCard, { ServiceData } from "./ServiceCard";
+import ServiceCard from "./ServiceCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
+import { ResponsiveProps } from "@/utils/types";
 
-interface SEOProps {
-  services: ServiceData[]; // تحديد نوع الخدمات كمصفوفة من ServiceData
-}
 
-const SEO: React.FC<SEOProps> = ({ services }) => {
+const SEO: React.FC<ResponsiveProps> = ({ services }) => {
   return (
     <div className="px-4 md:px-8 flex flex-col justify-center items-center">
       <div className="flex flex-col items-center w-full my-5 max-w-7xl">

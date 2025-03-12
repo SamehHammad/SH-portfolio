@@ -5,12 +5,7 @@ import Certificates from "@/components/about/Certificates";
 import Skills from "@/components/about/Skills";
 import Internships from "@/components/about/Internships";
 import { useRouter } from "next/navigation";
-
-// Define tab type
-interface Tab {
-  id: string;
-  label: string;
-}
+import { Tab } from "@/utils/types";
 
 const Tabs = ({
   currSearchParams,

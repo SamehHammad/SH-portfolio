@@ -8,18 +8,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Course } from "@/utils/types";
 
-// Define the Course type
-interface Course {
-  _id: string;
-  title: string;
-  url: string;
-  image?: {
-    asset: {
-      _ref: string;
-    };
-  }[];
-}
 
 const Certificates = () => {
   const { courses } = useSkills() as { courses: Course[] | undefined };
