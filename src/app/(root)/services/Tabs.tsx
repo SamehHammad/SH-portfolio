@@ -74,8 +74,8 @@ const Tabs = ({
   };
 
   return (
-    <div className="min-h-screen transition-colors duration-300">
-      <div className="px-4 py-12 sm:px-12">
+    <div className="transition-colors duration-300">
+      <div className="px-4 pt-12 sm:px-12">
         <div className="rounded-lg overflow-hidden">
           <div className="border-b border-gray-200 dark:border-gray-700">
             <nav

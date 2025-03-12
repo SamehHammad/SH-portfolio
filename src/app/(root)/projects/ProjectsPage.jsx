@@ -24,7 +24,7 @@ const filterProjects = (projects, organization) => {
 const ProjectsPage = () => {
   const { projects } = useProjects();
   const searchParams = useSearchParams();
-  const organization = searchParams?.get("intern");
+  const organization = searchParams?.get("org");
   const displayProjects = filterProjects(projects, organization);
 
   return (
