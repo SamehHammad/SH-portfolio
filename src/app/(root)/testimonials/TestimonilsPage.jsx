@@ -15,12 +15,7 @@ import { textVariant } from "@/utils/motion";
 import { useTheme } from "next-themes";
 import Socials from "@/components/Socials";
 
-// Base styles
-const baseStyles = {
-  sectionSubText: "text-sm uppercase tracking-wider",
-  sectionHeadText: "text-3xl md:text-4xl font-bold",
-  padding: "p-6 px-10 lg:px-20 md:p-8",
-};
+
 
 export { metadata };
 
@@ -28,50 +23,38 @@ const TestimonialsPage = () => {
   const { testimonials } = useTestimonials();
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  const cardBg = isDark
-    ? "bg-gray-800 border border-gray-700"
-    : "bg-gray-100 border border-gray-300";
-
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 px-5 lg:px-20`}
+      className={` transition-colors duration-300 px-5 lg:px-20`}
     >
       {/* Header Section */}
-      <div
-        className={`rounded-2xl ${baseStyles.padding} ${cardBg} mt-12 mx-4 md:mx-8 shadow-lg`}
-      >
+      <div className={`rounded-2xl mt-12 mx-4 md:mx-8 shadow-lg  card`}>
         <motion.div
           variants={textVariant()}
           initial="hidden"
           animate="show"
-          className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3"
         >
-          <div className="flex flex-col">
-            <p
-              className={`${baseStyles.sectionSubText} ${
-                isDark ? "text-gray-100" : "text-gray-600"
-              }`}
-            >
-              What others say
-            </p>
-            <h2
-              className={`${baseStyles.sectionHeadText} text-primary-500 mt-4`}
-            >
-              Testimonials
-            </h2>
+          <div className="flex flex-col justify-center items-center sm:items-start w-full">
+            <h2 className={`tab-header mt-2`}>Testimonials</h2>
+            <div className="flex flex-col items-center justify-between w-full sm:flex-row">
+              <p className={`card-description  uppercase `}>
+                What others say
+              </p>
 
-            <p className="text-base md:text-lg">
-              Want to see more reviews?{" "}
-              <Link
-                className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 underline transition-colors duration-200"
-                href="https://www.linkedin.com/in/sameh7ammad/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Click here
-              </Link>
-              .
-            </p>
+              <p className="tab-description mt-2">
+                Want to see more reviews?{"  "}
+                <Link
+                  className="interactive-link"
+                  href="https://www.linkedin.com/in/sameh7ammad/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click here
+                </Link>
+                .
+              </p>
+            </div>
           </div>
           <div className="sm:hidden flex justify-center items-center w-full">
             <Socials />

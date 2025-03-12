@@ -17,7 +17,7 @@ const SEO: React.FC<SEOProps> = ({ services }) => {
     <div className="px-4 md:px-8 flex flex-col justify-center items-center">
       <div className="flex flex-col items-center w-full my-5 max-w-7xl">
         <motion.p
-          className="text-sm md:text-lg  text-gray-800 dark:text-gray-100 text-center max-w-5xl mx-auto leading-relaxed"
+          className="tab-description"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

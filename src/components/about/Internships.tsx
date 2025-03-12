@@ -14,26 +14,28 @@ const Internships = () => {
 
   return (
     <div className="flex flex-col w-full flex-wrap items-center justify-between gap-2 mb-3">
-      <div className="flex flex-col items-center w-full my-5 max-w-7xl">
+      <div className="flex flex-col items-center w-full my-4 max-w-7xl">
         <motion.div
           className="flex flex-col items-center gap-2 pb-5"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="text-lg md:text-2xl font-bold text-primary-500 text-center max-w-5xl mx-auto leading-relaxed">
+          <span className="tab-header">
             Explore my internships in the programming field.
           </span>
-          <span className="text-sm md:text-lg text-gray-800 dark:text-gray-100 text-center mx-auto leading-relaxed">
+          <span className="tab-description">
             Let&apos;s collaborate and build something great together!
           </span>
         </motion.div>
       </div>
 
-      {education
+    <div className="flex flex-col gap-5">
+    {education
         ?.slice()
         .reverse()
         .map((edu) => <InternshipCard key={edu._id} education={edu} />)}
+    </div>
     </div>
   );
 };

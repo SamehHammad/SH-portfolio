@@ -25,18 +25,18 @@ const Certificates = () => {
   const { courses } = useSkills() as { courses: Course[] | undefined };
 
   return (
-    <div className="px-4 md:px-8 flex flex-col justify-center items-center">
-      <div className="flex flex-col w-full my-5 max-w-7xl">
+    <div className=" md:px-8 flex flex-col justify-center items-center">
+      <div className="flex flex-col w-full my-4 md:max-w-7xl">
         <motion.div
           className="flex flex-col items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="text-lg md:text-2xl font-bold text-primary-500 text-center  mx-auto leading-relaxed">
-            Explore my internships in the programming field.
+          <span className="tab-header">
+          Certificates of Achievement in Programming
           </span>
-          <span className="text-sm md:text-lg text-gray-800 dark:text-gray-100 text-center max-w-5xl leading-relaxed">
+          <span className="tab-description">
             Check out my front-end development certificates showcasing skills in
             Next.js, React, and clean coding! Browse them to learn more about my
             expertise in building modern, responsive web applications.{" "}

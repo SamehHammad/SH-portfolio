@@ -28,24 +28,24 @@ const ProjectsPage = () => {
   const displayProjects = filterProjects(projects, organization);
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="pt-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-center mb-12"
+        className="text-center mb-2 md:mb-4"
       >
-        <p className="text-lg text-gray-600 font-medium dark:text-gray-100">
-          My Work{" "}
+        <h2 className="tab-header md:mb-2">
+          Projects
+        </h2>
+        <p className="tab-description">
+          My Projects{" "}
           {organization && (
-            <span className="inline-block bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-200 px-3 py-1 rounded-full text-sm font-semibold ml-2">
-              in {organization.toUpperCase()} Internship
+            <span className="inline-block tab-description">
+              in <span className="text-primary-500 font-bold">{organization.toUpperCase()}</span> Internship
             </span>
           )}
         </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-primary-500 dark:text-primary-400 mt-4">
-          Projects
-        </h2>
       </motion.div>
 
       <div className="max-w-7xl mx-auto">
@@ -53,7 +53,7 @@ const ProjectsPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center text-gray-600 text-xs md:text-sm xl:text-lg leading-tight dark:text-gray-100"
+          className="text-center tab-description"
         >
           These projects highlight my skills and experience through real-world
           examples, showcasing my ability to tackle complex challenges with

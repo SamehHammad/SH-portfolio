@@ -55,8 +55,10 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
         onClick={() => handleCertificateClick(course.url)}
       >
         {/* Nail */}
-        <div className="absolute left-1/2 -top-2 w-4 h-4 transform -translate-x-1/2">
-          <div className="w-3 h-3 bg-gray-400 rounded-full shadow-lg" />
+        <div className="absolute left-1/2 -top-6 w-4 h-4 transform -translate-x-1/2">
+          <div className="w-3 h-3 bg-primary-500 rounded-full shadow-lg z-50" />
+          <div className="w-[1px] h-24 -left-12 bg-gray-400 dark:bg-gray-100 rotate-[75deg] rounded-lg fixed -top-8 z-0" />
+          <div className="w-[1px] h-24 -right-[42px] bg-gray-400 dark:bg-gray-100 -rotate-[75deg] rounded-lg fixed -top-8 z-0" />
         </div>
 
         {/* String */}
@@ -73,7 +75,7 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
 
         {/* Certificate Card */}
         <div
-          className="relative bg-white rounded-lg p-6 shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all duration-300 border-8 border-yellow-400/40"
+          className="relative card p-6 border-8 border-yellow-400/40"
           style={{
             transform: `rotate(${rotation}deg)`,
             marginTop: `${stringLength}px`,
@@ -93,9 +95,7 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgAB/0z6RwAAAABJRU5ErkJggg=="
               />
             )}
-            <h3 className="text-sm md:text-lg font-semibold text-center text-gray-800">
-              {course.title}
-            </h3>
+            <h3 className="card-title text-cente">{course.title}</h3>
             <div className="relative mt-2 inline-block">
               <button
                 aria-label={course.title}
@@ -104,7 +104,7 @@ const CertificateCard = memo(({ course }: CertificateCardProps) => {
                 onMouseLeave={() => setShowTooltip(false)}
                 onClick={() => handleCertificateClick(course.url)}
               >
-                <PiCertificateFill className="text-xl w-6 h-6 text-yellow-600 drop-shadow-sm transition-transform hover:scale-110 z-20" />
+                <PiCertificateFill className="text-xl w-6 h-6 interactive-link drop-shadow-sm transition-transform hover:scale-110 z-20" />
                 {showTooltip && (
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 text-xs text-white bg-gray-800 rounded-md whitespace-nowrap shadow-lg z-20">
                     <p className="text-white">View Certificate</p>

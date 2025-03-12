@@ -7,7 +7,6 @@ import {
 } from "react-vertical-timeline-component";
 import { motion, useInView } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
-import { styles } from "@/utils/style/styles";
 import { textVariant } from "@/utils/motion";
 import useSkills from "@/hooks/useSkills";
 import { getSanityImageUrl } from "@/lib/helper";
@@ -50,7 +49,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: isDark ? "#131a29" : "#f3f4f6", // Adjusted for better contrast
+        background: isDark ? "#131a29" : "#f3f4f6",
         color: isDark ? "#f3f4f6" : "#131a29",
         boxShadow: "5px 5px 10px 5px rgba(0, 0, 0, 0.1)",
       }}
@@ -71,12 +70,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       }
       ref={ref}
     >
-      <div className="flex flex-col items-center gap-3">
-        <h3 className="text-gray-800 dark:text-gray-100 text-[22px] font-bold">
+      <div className="flex flex-col items-center gap-3 ">
+        <h3 className="text-gray-800 dark:text-gray-100 card-title font-bold">
           {experience.company}
         </h3>
         <p
-          className="text-gray-800 dark:text-gray-100  text-[16px] font-semibold"
+          className="card-description"
           style={{ margin: 0 }}
         >
           {displayText}
@@ -112,7 +111,7 @@ const Experience: React.FC = () => {
     <>
       <motion.div variants={textVariant()} initial="hidden" animate="show">
         <h1
-          className={`${styles.sectionSubText} text-center text-primary-500 font-bold text-xl`}
+          className={`tab-header uppercase`}
         >
           Work Experience.
         </h1>

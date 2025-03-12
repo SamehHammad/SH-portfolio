@@ -24,13 +24,24 @@ body {
   .invert-colors {
     @apply invert dark:invert-0;
   }
+  .card {
+    @apply p-6 rounded-lg bg-gray-100 border border-gray-300  bg-gradient-to-r  dark:from-gray-800 dark:to-gray-900 shadow-lg hover:shadow-xl transform transition-all duration-300;
+  }
+  .card-title {
+    @apply text-sm md:text-lg font-semibold text-gray-700 dark:text-primary-100 leading-tight;
+  }
 
-  .light-gradient {
-    background: linear-gradient(
-      132deg,
-      rgba(247, 249, 255, 0.5) 0%,
-      rgba(229, 237, 255, 0.25) 100%
-    );
+  .card-description {
+    @apply text-xs md:text-sm text-gray-400 leading-relaxed;
+  }
+  .interactive-link {
+    @apply underline text-primary-500 tracking-wider leading-8;
+  }
+  .tab-description {
+    @apply text-xs md:text-lg text-gray-500 dark:text-gray-300 leading-relaxed mx-auto text-center max-w-7xl;
+  }
+  .tab-header {
+    @apply text-2xl md:text-3xl font-bold text-primary-500 text-center;
   }
 
   .flex-center {

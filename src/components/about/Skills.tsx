@@ -27,10 +27,10 @@ const Skills: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="text-lg md:text-2xl font-bold  text-primary-500 text-center max-w-5xl mx-auto leading-relaxed">
+          <span className="tab-header">
             Take a look at my skills.
           </span>
-          <span className="text-sm md:text-lg text-gray-800 dark:text-gray-100 text-center  mx-auto leading-relaxed">
+          <span className="tab-description">
             Let&apos;s build something great!
           </span>
         </motion.div>
