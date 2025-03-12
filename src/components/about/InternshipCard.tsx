@@ -8,6 +8,7 @@ interface Education {
   _id: string;
   name: string;
   date: string;
+  org: string;
 }
 
 // Define props interface
@@ -39,11 +40,7 @@ const InternshipCard = memo<InternshipProps>(({ education }) => {
             Explore more about my internship experiences and projects I worked
             on during this period.
             <Link
-              href={
-                education.name.includes("ITI")
-                  ? "/projects?org=iti"
-                  : "/projects?org=sef"
-              }
+              href={`/projects?org=${education.org}` }
               className="interactive-link"
             >
               click here

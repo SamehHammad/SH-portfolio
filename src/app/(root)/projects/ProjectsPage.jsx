@@ -10,15 +10,13 @@ import { fadeIn } from "@/utils/motion";
 import ProjectCard from "@/components/projects/ProjectCard";
 import useProjects from "@/hooks/useProjects";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
-// Move this outside the component to avoid recalculation
+//================ Filter Projects ================
 const filterProjects = (projects, organization) => {
   if (!projects) return [];
   if (!organization) return projects;
-  return projects.filter(
-    (project) =>
-      project.organization === (organization === "iti" ? "iti" : "sef")
-  );
+  return projects.filter((project) => project.organization === organization);
 };
 
 const ProjectsPage = () => {
@@ -35,14 +33,25 @@ const ProjectsPage = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-center mb-2 md:mb-4"
       >
-        <h2 className="tab-header md:mb-2">
-          Projects
-        </h2>
+        <div className="flex justify-center gap-2 ">
+          <h2 className="tab-header md:mb-2">Projects</h2>
+          <span className="card-description mt-2">( {displayProjects.length} )</span>
+        </div>
         <p className="tab-description">
           My Projects{" "}
           {organization && (
             <span className="inline-block tab-description">
-              in <span className="text-primary-500 font-bold">{organization.toUpperCase()}</span> Internship
+              in{" "}
+              <span className="font-bold">
+                ( {organization.toUpperCase()} )
+              </span>
+              , or explore{" "}
+              <Link
+                href={"/projects"}
+                className="interactive-link font-semibold"
+              >
+                all projects
+              </Link>
             </span>
           )}
         </p>

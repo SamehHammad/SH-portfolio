@@ -40,7 +40,7 @@ const Tabs = ({
       router.replace("/services?s=responsive_design");
       setActiveTab("responsive_design");
     }
-  }, [currSearchParams, router]); // Fixed dependency array
+  }, [currSearchParams, router]); 
 
   const tabs: Tab[] = [
     { id: "responsive_design", label: "Responsive Web Design" },

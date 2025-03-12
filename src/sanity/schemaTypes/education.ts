@@ -20,5 +20,10 @@ export const educationSchema = defineType({
             title: 'Date',
             type: 'string',
         }),
+        defineField({
+            name: 'org',
+            title: 'org',
+            type: 'string',
+        }),
     ],
 });

@@ -11,6 +11,7 @@ import { textVariant } from "@/utils/motion";
 import useSkills from "@/hooks/useSkills";
 import { getSanityImageUrl } from "@/lib/helper";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 interface Experience {
   date: string;
@@ -18,6 +19,7 @@ interface Experience {
   icon: string;
   company: string;
   title: string;
+  org: string;
   points: string[];
   logos: { asset: { _ref: string } }[];
 }
@@ -74,10 +76,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         <h3 className="text-gray-800 dark:text-gray-100 card-title font-bold">
           {experience.company}
         </h3>
-        <p
-          className="card-description"
-          style={{ margin: 0 }}
-        >
+        <p className="card-description" style={{ margin: 0 }}>
           {displayText}
         </p>
         {needsShowMore && (
@@ -92,6 +91,18 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             {showMore ? "Show Less" : "Show More"}
           </button>
         )}
+        <div className="w-full ">
+          <p className="card-description">
+            Explore more about my internship experiences and projects I worked
+            on during this period.
+            <Link
+              href={`/projects?org=${experience.org}`}
+              className="interactive-link"
+            >
+              click here
+            </Link>
+          </p>
+        </div>
       </div>
     </VerticalTimelineElement>
   );
@@ -110,11 +121,7 @@ const Experience: React.FC = () => {
   return (
     <>
       <motion.div variants={textVariant()} initial="hidden" animate="show">
-        <h1
-          className={`tab-header uppercase`}
-        >
-          Work Experience.
-        </h1>
+        <h1 className={`tab-header uppercase`}>Work Experience.</h1>
       </motion.div>
 
       <div className="flex flex-col">
