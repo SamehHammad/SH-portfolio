@@ -43,7 +43,7 @@ export default function ThemeSwitcher() {
         initial={false}
         animate={{
           background: isDark ? "#0D0B28" : "#38bdf8",
-          borderColor: isDark ? "#818cf8" : "#7dd3fc",
+          borderColor: isDark ? "#FF7000" : "#7dd3fc",
         }}
         whileHover={{ scale: 1.05, boxShadow: "0 4px 15px rgba(0,0,0,0.2)" }}
         whileTap={{ scale: 0.95 }}

@@ -10,26 +10,22 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Course } from "@/utils/types";
 
-
 const Certificates = () => {
   const { courses } = useSkills() as { courses: Course[] | undefined };
 
   return (
     <div className=" md:px-8 flex flex-col justify-center items-center">
-      <div className="flex flex-col w-full my-4 md:max-w-7xl">
+      <div className="flex flex-col w-full my-2 md:max-w-7xl">
         <motion.div
           className="flex flex-col items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="tab-header">
-          Certificates of Achievement in Programming
-          </span>
+          <span className="tab-header">Certificates</span>
           <span className="tab-description">
             Check out my front-end development certificates showcasing skills in
-            Next.js, React, and clean coding! Browse them to learn more about my
-            expertise in building modern, responsive web applications.{" "}
+            Next.js, React, and clean coding ...etc!
           </span>
         </motion.div>
       </div>
@@ -55,7 +51,7 @@ const Certificates = () => {
           className="mySwiper pb-16"
         >
           {courses?.map((course, idx) => (
-            <SwiperSlide key={course._id} className="py-6 flex justify-center">
+            <SwiperSlide key={course._id} className="py-4 flex justify-center">
               <div className="w-full">
                 <CertificateCard
                   course={course}

@@ -10,7 +10,7 @@ const ContactPage = () => {
     <div className="min-h-screen">
       <div className="container mx-auto max-w-[90%] text-center xl:text-left flex items-center justify-center mt-16 md:mt-24">
         {/* text & form container */}
-        <div className="flex flex-col w-full max-w-[700px] bg-gray-300 dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+        <div className="flex flex-col w-full max-w-[700px] card rounded-2xl shadow-lg p-8">
           {/* heading */}
           <motion.h2
             variants={fadeIn("up", 0.2)}
