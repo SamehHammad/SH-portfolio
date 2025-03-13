@@ -81,14 +81,9 @@ const Tabs = ({
                     router.push(`/services?s=${tab.id}`);
                   }}
                   className={`
-                    relative py-2 px-2 text-[9px] md:text-sm  font-medium rounded-md
+                    relative py-2 px-2 text-[10px] md:text-sm font-medium rounded-md
                     transition-all duration-200 ease-in-out
-                    ${
-                      activeTab === tab.id
-                        ? "bg-[#FF7000] text-white"
-                        : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    }
-                    focus:outline-none focus:ring-2 focus:ring-[#FF7000] focus:ring-offset-2
+                    ${activeTab === tab.id ? "card !p-3 border border-1 !border-primary-500" : ""}
                   `}
                   aria-current={activeTab === tab.id ? "page" : undefined}
                 >
